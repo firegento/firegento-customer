@@ -1,4 +1,21 @@
 <?xml version="1.0"?>
+<!--
+/**
+ * This file is part of the FIREGENTO project.
+ *
+ * FireGento_Core is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License version 3 as
+ * published by the Free Software Foundation.
+ *
+ * This script is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+ *
+ * @author    FireGento Team <team@firegento.com>
+ * @copyright 2011 FireGento Team (http://www.firegento.de). All rights served.
+ * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
+ */
+ -->
 <config>
     <modules>
         <FireGento_Customer>
@@ -28,6 +45,42 @@
             </firegento_customer_setup>
         </resources>
     </global>
+    <frontend>
+    	<events>
+            <customer_save_before>
+                <observers>
+                    <firegento_customer_observer>
+                        <class>firegento_customer/observer</class>
+                        <method>customerSaveBefore</method>
+                    </firegento_customer_observer>
+                </observers>
+            </customer_save_before>
+            <controller_action_predispatch_customer_account_loginPost>
+                <observers>
+                    <firegento_customer_observer>
+                        <class>firegento_customer/observer</class>
+                        <method>customerPreLogin</method>
+                    </firegento_customer_observer>
+                </observers>
+            </controller_action_predispatch_customer_account_loginPost>
+            <controller_action_postdispatch_customer_account_loginPost>
+                <observers>
+                    <firegento_customer_observer>
+                        <class>firegento_customer/observer</class>
+                        <method>customerPostLogin</method>
+                    </firegento_customer_observer>
+                </observers>
+            </controller_action_postdispatch_customer_account_loginPost>
+            <controller_action_postdispatch_checkout_onepage_saveBilling>
+                <observers>
+                    <firegento_customer_observer>
+                        <class>firegento_customer/observer</class>
+                        <method>checkOnepageRegistration</method>
+                    </firegento_customer_observer>
+                </observers>
+            </controller_action_postdispatch_checkout_onepage_saveBilling>
+         </events>
+    </frontend>
     <default>
         <customer>
             <password>
