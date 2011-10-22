@@ -5,4 +5,27 @@
             <version>0.1.0</version>
         </FireGento_Customer>
     </modules>
+    <global>
+        <helpers>
+            <firegento_customer>
+                <class>FireGento_Customer_Helper</class>
+            </firegento_customer>
+        </helpers>
+        <models>
+            <firegento_customer>
+                <class>FireGento_Customer_Model</class>
+            </firegento_customer>
+        </models>
+        <resources>
+            <firegento_customer_setup>
+                <setup>
+                    <module>FireGento_Customer</module>
+                    <class>Mage_Eav_Model_Entity_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </firegento_customer_setup>
+        </resources>
+    </global>
 </config>
