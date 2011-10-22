@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <sections>
+        <customer>
+            <groups>
+                <password>
+                    <fields>
+                        <login_attempts translate="label comment">
+                            <label>Lock after x attempts</label>
+                            <comment>Lock account after x failed login attempts</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1000</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </login_attempts>
+                        <login_attempt_span translate="label comment">
+                            <label>Lock attempt span</label>
+                            <comment>Time period in seconds in which these attempts have to be</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1010</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </login_attempt_span>
+                        <login_lock_time translate="label comment">
+                            <label>Lock time</label>
+                            <comment>Lock the account for x seconds</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1020</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </login_lock_time>
+                    </fields>
+                </password>
+            </groups>
+        </customer>
+	</sections>
+</config>

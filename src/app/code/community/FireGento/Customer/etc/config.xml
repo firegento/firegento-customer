@@ -28,4 +28,13 @@
             </firegento_customer_setup>
         </resources>
     </global>
+    <default>
+        <customer>
+            <password>
+                <login_attempts>5</login_attempts>
+                <login_attempt_span>900</login_attempt_span>
+                <login_lock_time>900</login_lock_time>
+            </password>
+        </customer>
+    </default>
 </config>
