@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="FireGento_DynamicCategory" default="deploy-dev.local" basedir=".">
+<project name="FireGento_Customer" default="deploy-dev.local" basedir=".">
     <property file="build.properties"/>
     <property file="build.default.properties"/>
     <property name="srcdir" value="${basedir}/src"/>
