@@ -1,0 +1,9 @@
+/build.properties
+/.buildpath
+/.settings
+/.externalToolBuilders
+/.project
+/.idea
+/cache.properties
+.DS_Store
+.vagrant
