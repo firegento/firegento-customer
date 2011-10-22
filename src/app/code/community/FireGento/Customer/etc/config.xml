@@ -46,6 +46,15 @@
         </resources>
     </global>
     <frontend>
+        <translate>
+            <modules>
+                <FireGento_Customer>
+                    <files>
+                        <default>FireGento_Customer.csv</default>
+                    </files>
+                </FireGento_Customer>
+            </modules>
+        </translate>
     	<events>
             <customer_save_before>
                 <observers>
@@ -81,6 +90,17 @@
             </controller_action_postdispatch_checkout_onepage_saveBilling>
          </events>
     </frontend>
+    <adminhtml>
+        <translate>
+            <modules>
+                <FireGento_Customer>
+                    <files>
+                        <default>FireGento_Customer.csv</default>
+                    </files>
+                </FireGento_Customer>
+            </modules>
+        </translate>
+    </adminhtml>
     <default>
         <customer>
             <password>
