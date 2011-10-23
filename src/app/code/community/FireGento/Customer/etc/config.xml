@@ -68,7 +68,7 @@
                 <observers>
                     <firegento_customer_observer>
                         <class>firegento_customer/observer</class>
-                        <method>customerPreLogin</method>
+                        <method>validateCustomerActivationBeforeLogin</method>
                     </firegento_customer_observer>
                 </observers>
             </controller_action_predispatch_customer_account_loginPost>
@@ -76,7 +76,7 @@
                 <observers>
                     <firegento_customer_observer>
                         <class>firegento_customer/observer</class>
-                        <method>customerPostLogin</method>
+                        <method>countFailedLogins</method>
                     </firegento_customer_observer>
                 </observers>
             </controller_action_postdispatch_customer_account_loginPost>
@@ -84,7 +84,7 @@
                 <observers>
                     <firegento_customer_observer>
                         <class>firegento_customer/observer</class>
-                        <method>checkOnepageRegistration</method>
+                        <method>checkPasswordStrengthAtOnepageRegistration</method>
                     </firegento_customer_observer>
                 </observers>
             </controller_action_postdispatch_checkout_onepage_saveBilling>
