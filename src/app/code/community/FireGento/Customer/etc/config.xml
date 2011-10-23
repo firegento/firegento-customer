@@ -46,6 +46,13 @@
         </resources>
     </global>
     <frontend>
+        <layout>
+            <updates>
+                <firegento_customer>
+                    <file>firegento_customer.xml</file>
+                </firegento_customer>
+            </updates>
+        </layout>
         <translate>
             <modules>
                 <FireGento_Customer>
