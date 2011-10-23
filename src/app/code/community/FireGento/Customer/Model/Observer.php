@@ -320,7 +320,7 @@ class FireGento_Customer_Model_Observer
         // minimum password length = 9
         if (strlen($password) < 9) {
             throw new FireGento_Customer_Exception(
-                $this->_getHelper()->__('Your password lenght must be greater than 8.')
+                $this->_getHelper()->__('Your password length must be greater than 8.')
             );
         }
         
