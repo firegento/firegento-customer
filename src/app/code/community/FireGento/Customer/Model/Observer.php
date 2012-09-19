@@ -37,7 +37,7 @@ class FireGento_Customer_Model_Observer
 
     /**
      * Retrieve the helper class
-     * 
+     *
      * @return FireGento_Customer_Helper_Data Helper
      */
     protected function _getHelper()
@@ -57,7 +57,7 @@ class FireGento_Customer_Model_Observer
 
     /**
      * Retrieve the current website ID
-     * 
+     *
      * @return int Website ID
      */
     public function _getWebsiteId()
@@ -67,7 +67,7 @@ class FireGento_Customer_Model_Observer
 
     /**
      * Validates the customer password upon save.
-     * 
+     *
      * @throws Exception
      * @param Varien_Event_Observer $observer Observer
      * @return FireGento_Customer_Model_Observer Self.
@@ -82,7 +82,7 @@ class FireGento_Customer_Model_Observer
     /**
      * Validates the customer before logging him in. A customer can be set to active/inactive
      * and he can be inactivated if user tries to login with wrong user credentials.
-     * 
+     *
      * Observer for controller_action_predispatch_customer_account_loginPost event.
      *
      * @param Varien_Event_Observer $observer Observer
@@ -93,9 +93,8 @@ class FireGento_Customer_Model_Observer
         $controller = $observer->getControllerAction();
         try {
 
-            $loginParams = $controller->getRequest()->getParams();
-            if (isset($loginParams['login'])) {
-                $loginParams = $loginParams['login'];
+            $loginParams = $controller->getRequest()->getParams('login');
+            if (isset($loginParams['username'])) {
                 $validator = new Zend_Validate_EmailAddress();
 
                 if ($validator->isValid($loginParams['username'])) {
@@ -141,7 +140,7 @@ class FireGento_Customer_Model_Observer
 
     /**
      * Validates if a customer account is active.
-     * 
+     *
      * @throws FireGento_Customer_Exception
      * @param Mage_Customer_Model_Customer $customer Customer Instance
      * @return void
@@ -150,7 +149,7 @@ class FireGento_Customer_Model_Observer
     {
         $customerActive = $customer->getData('customer_active');
         if (!$customerActive) {
-        	throw new FireGento_Customer_Exception(
+            throw new FireGento_Customer_Exception(
                 $this->_getHelper()->__('Your account is currently not active.')
             );
         }
@@ -185,12 +184,12 @@ class FireGento_Customer_Model_Observer
     /**
      * Counts the number of failed logins of a current users.
      * Validate the controller postDispatch action of customer_account_loginPost.
-     * 
+     *
      * If user is not logged in at this point in time but login parameters given,
      * the user had wrong credentials -> so increment the number of failed logins.
      * If otherwise the user is logged in successfully, we can forget about
      * previous login failures.
-     * 
+     *
      * Observer for controller_action_postdispatch_customer_account_loginPost event
      *
      * @param Varien_Event_Observer $observer Observer
@@ -202,12 +201,11 @@ class FireGento_Customer_Model_Observer
             $loginParams = $observer->getControllerAction()->getRequest()->getParam('login');
             if (isset($loginParams) && isset($loginParams['username'])) {
 
-                $loginParams = $loginParams['login'];
                 $validator = new Zend_Validate_EmailAddress();
 
                 if ($validator->isValid($loginParams['username'])) {
 
-                	// Load Customer
+                    // Load Customer
                     $customer = Mage::getModel('customer/customer')
                         ->setWebsiteId($this->_getWebsiteId())
                         ->loadByEmail($loginParams['username']);
@@ -244,9 +242,9 @@ class FireGento_Customer_Model_Observer
 
     /**
      * Checks the password in checkout register mode
-     * 
+     *
      * Observer for controller_action_postdispatch_checkout_onepage_saveBilling event.
-     * 
+     *
      * @param Varien_Event_Observer $observer Observer
      * @return FireGento_Customer_Model_Observer Self.
      */
@@ -284,9 +282,9 @@ class FireGento_Customer_Model_Observer
     }
 
     /**
-     * Validates the password against some common criterias. The validation is only 
+     * Validates the password against some common criterias. The validation is only
      * started, if a password was given within the running process.
-     * 
+     *
      * @throws FireGento_Customer_Exception
      * @param string $email    Email Address
      * @param string $password Password
@@ -302,7 +300,7 @@ class FireGento_Customer_Model_Observer
         /*
          * VALIDATIONS
          */
-		// password must not be equal to email
+        // password must not be equal to email
         if ($email == $password) {
             throw new FireGento_Customer_Exception(
                 $this->_getHelper()->__('Your email address and your password can not be equal.')
