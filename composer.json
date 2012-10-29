@@ -2,7 +2,7 @@
    "name": "firegento/customer",
    "license": ["GPL-3.0"],
    "type": "magento-module",
-   "minimum-stability": "dev",
+   "description": "Activate/deactivate customers, deactivate customers after max-retry logins.",
    "require": {
       "magento-hackathon/magento-composer-installer": "dev-master"
    }
