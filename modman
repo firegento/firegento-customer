@@ -1,5 +1,5 @@
 src/app/code/community/FireGento/Customer	app/code/community/FireGento/Customer
-src/app/design/adminhtml/default/default/layout/firegento_customer.xml	app/design/adminhtml/default/default/layout/firegento_customer.xml
+src/app/design/frontend/base/default/layout/firegento_customer.xml	app/design/frontend/base/default/layout/firegento_customer.xml
 src/app/etc/modules/FireGento_Customer.xml	app/etc/modules/FireGento_Customer.xml
 src/app/locale/de_DE/FireGento_Customer.csv	app/locale/de_DE/FireGento_Customer.csv
 src/app/locale/en_US/FireGento_Customer.csv	app/locale/en_US/FireGento_Customer.csv
