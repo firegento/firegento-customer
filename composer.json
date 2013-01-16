@@ -4,6 +4,6 @@
    "type": "magento-module",
    "description": "Activate/deactivate customers, deactivate customers after max-retry logins.",
    "require": {
-      "magento-hackathon/magento-composer-installer": "dev-master"
+      "magento-hackathon/magento-composer-installer": "*"
    }
 }
