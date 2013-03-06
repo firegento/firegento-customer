@@ -93,7 +93,7 @@ class FireGento_Customer_Model_Observer
         $controller = $observer->getControllerAction();
         try {
 
-            $loginParams = $controller->getRequest()->getParams('login');
+            $loginParams = $controller->getRequest()->getParam('login');
             if (isset($loginParams['username'])) {
                 $validator = new Zend_Validate_EmailAddress();
 
