@@ -131,9 +131,7 @@ class FireGento_Customer_Model_Observer
             );
 
             // Redirect to login page
-            $loginUrl = Mage::helper('customer')->getLoginUrl();
-            $controller->getResponse()->setRedirect($loginUrl);
-            $controller->getResponse()->sendResponse();
+            Mage::helper('firegento_customer/redirect')->_loginPostRedirect();
         }
         return $this;
     }
