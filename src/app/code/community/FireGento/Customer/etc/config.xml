@@ -62,7 +62,7 @@
                 </FireGento_Customer>
             </modules>
         </translate>
-    	<events>
+        <events>
             <customer_save_before>
                 <observers>
                     <firegento_customer_observer>
