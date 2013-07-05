@@ -29,7 +29,7 @@
  * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
  * @version   $$Id$$
  */
-class FireGento_Customer_Helper_Data extends Mage_Core_Helper_Abstract
+class FireGento_Customer_Helper_Data extends Mage_Customer_Helper_Data
 {
     
 }
