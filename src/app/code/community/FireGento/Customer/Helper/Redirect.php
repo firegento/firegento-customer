@@ -31,7 +31,6 @@
  */
 class FireGento_Customer_Helper_Redirect extends FireGento_Customer_Helper_Data
 {
-	
     /**
      * Define target URL and redirect customer after logging in
      */
@@ -74,9 +73,10 @@ class FireGento_Customer_Helper_Redirect extends FireGento_Customer_Helper_Data
         }
         $this->_redirectUrl($session->getBeforeAuthUrl(true));
     }
-    
+
     /**
-     * 
+     * Retrieve the current request
+     *
      * @return Mage_Core_Controller_Request_Http
      */
     public function getRequest()
@@ -84,14 +84,15 @@ class FireGento_Customer_Helper_Redirect extends FireGento_Customer_Helper_Data
         return Mage::app()->getRequest();
     }
 
-	/**
-	 * 
-	 * @return Mage_Core_Controller_Response_Http
-	 */
-	public function getResponse()
-	{
-		return Mage::app()->getResponse();
-	}
+    /**
+     * Retrieve the current response
+     *
+     * @return Mage_Core_Controller_Response_Http
+     */
+    public function getResponse()
+    {
+        return Mage::app()->getResponse();
+    }
 
     /**
      * Retrieve customer session model object
@@ -102,33 +103,36 @@ class FireGento_Customer_Helper_Redirect extends FireGento_Customer_Helper_Data
     {
         return Mage::getSingleton('customer/session');
     }
-    
+
     /**
      * Check url to be used as internal
      *
-     * @param   string $url
-     * @return  bool
+     * @param  string $url
+     * @return bool
      */
     public function _isUrlInternal($url)
     {
         if (strpos($url, 'http') !== false) {
-            /**
+
+            /*
              * Url must start from base secure or base unsecure url
              */
+
             if ((strpos($url, Mage::app()->getStore()->getBaseUrl()) === 0)
                 || (strpos($url, Mage::app()->getStore()->getBaseUrl(Mage_Core_Model_Store::URL_TYPE_LINK, true)) === 0)
             ) {
                 return true;
             }
         }
+
         return false;
     }
-    
+
     /**
      * Set redirect url into response
      *
-     * @param   string $url
-     * @return  Mage_Core_Controller_Varien_Action
+     * @param  string $url
+     * @return Mage_Core_Controller_Varien_Action
      */
     public function _redirectUrl($url)
     {

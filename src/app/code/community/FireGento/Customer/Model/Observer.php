@@ -41,7 +41,7 @@ class FireGento_Customer_Model_Observer
     /**
      * Retrieve the helper class
      *
-     * @return FireGento_Customer_Helper_Data Helper
+     * @return FireGento_Customer_Helper_Data
      */
     protected function _getHelper()
     {
@@ -61,7 +61,7 @@ class FireGento_Customer_Model_Observer
     /**
      * Retrieve the current website ID
      *
-     * @return int Website ID
+     * @return int
      */
     public function _getWebsiteId()
     {
@@ -72,14 +72,12 @@ class FireGento_Customer_Model_Observer
      * Validates the customer password upon save.
      *
      * @throws Exception
-     * @param Varien_Event_Observer $observer Observer
-     * @return FireGento_Customer_Model_Observer Self.
+     * @param  Varien_Event_Observer $observer
      */
     public function customerSaveBefore(Varien_Event_Observer $observer)
     {
         $customer = $observer->getCustomer();
         $this->_validatePassword($customer->getEmail(), $customer->getPassword());
-        return $this;
     }
 
     /**
@@ -88,14 +86,13 @@ class FireGento_Customer_Model_Observer
      *
      * Observer for controller_action_predispatch_customer_account_loginPost event.
      *
-     * @param Varien_Event_Observer $observer Observer
-     * @return FireGento_Customer_Model_Observer Self.
+     * @param Varien_Event_Observer $observer
      */
     public function validateCustomerActivationBeforeLogin(Varien_Event_Observer $observer)
     {
         $controller = $observer->getControllerAction();
-        try {
 
+        try {
             $loginParams = $controller->getRequest()->getParam('login');
             if (isset($loginParams['username'])) {
                 $validator = new Zend_Validate_EmailAddress();
@@ -122,8 +119,7 @@ class FireGento_Customer_Model_Observer
                     );
                 }
             }
-        }
-        catch (Exception $e) {
+        } catch (Exception $e) {
             $this->_getSession()->addError($this->_getHelper()->__($e->getMessage()));
 
             // Set no-dispatch flag
@@ -136,15 +132,13 @@ class FireGento_Customer_Model_Observer
             // Redirect to login page
             Mage::helper('firegento_customer/redirect')->_loginPostRedirect();
         }
-        return $this;
     }
 
     /**
      * Validates if a customer account is active.
      *
      * @throws FireGento_Customer_Exception
-     * @param Mage_Customer_Model_Customer $customer Customer Instance
-     * @return void
+     * @param  Mage_Customer_Model_Customer $customer
      */
     protected function _validateCustomerActivationStatus($customer)
     {
@@ -158,6 +152,7 @@ class FireGento_Customer_Model_Observer
         /*
          * Check if the last failed login ban is over
          */
+
         $now          = time();
         $lockDuration = Mage::getStoreConfig(self::XML_PATH_LOGIN_LOCK_TIME);
         $lastAttempt  = $customer->getData('customer_last_login_failed');
@@ -171,6 +166,7 @@ class FireGento_Customer_Model_Observer
         /*
          * Check if the login attempts reached the ban limit
          */
+
         $loginAttempts = $customer->getData('customer_logins_failed');
         $attemptLock   = $loginAttempts >= Mage::getStoreConfig(self::XML_PATH_LOGIN_ATTEMPTS);
         $timeLock      = ($now - $lastAttempt < $lockDuration);
@@ -193,8 +189,7 @@ class FireGento_Customer_Model_Observer
      *
      * Observer for controller_action_postdispatch_customer_account_loginPost event
      *
-     * @param Varien_Event_Observer $observer Observer
-     * @return FireGento_Customer_Model_Observer Self.
+     * @param Varien_Event_Observer $observer
      */
     public function countFailedLogins(Varien_Event_Observer $observer)
     {
@@ -232,13 +227,12 @@ class FireGento_Customer_Model_Observer
                     }
                 }
             }
-        } else { // if (!$this->_getSession()->isLoggedIn())
+        } else {
             $customer = $this->_getSession()->getCustomer();
             $customer->setData('customer_logins_failed', 0)
                 ->setData('customer_last_login_failed', 0)
                 ->save();
         }
-        return $this;
     }
 
     /**
@@ -246,8 +240,8 @@ class FireGento_Customer_Model_Observer
      *
      * Observer for controller_action_postdispatch_checkout_onepage_saveBilling event.
      *
-     * @param Varien_Event_Observer $observer Observer
-     * @return FireGento_Customer_Model_Observer Self.
+     * @param  Varien_Event_Observer $observer
+     * @return FireGento_Customer_Model_Observer
      */
     public function checkPasswordStrengthAtOnepageRegistration(Varien_Event_Observer $observer)
     {
@@ -275,6 +269,7 @@ class FireGento_Customer_Model_Observer
                 'error'   => -1,
                 'message' => $e->getMessage(),
             );
+
             $controllerAction->getResponse()->setBody(
                 Mage::helper('core')->jsonEncode($error)
             );

@@ -35,12 +35,11 @@ $installer = $this;
 $installer->startSetup();
 
 // update customers
-$model = Mage::getModel("customer/customer")->getCollection();
-foreach($model as $_customer)
-{
-    Mage::getModel("customer/customer")->load($_customer->getId())
-            ->setCustomerActive(1)
-            ->save();
+$collection = Mage::getModel('customer/customer')->getCollection();
+foreach ($collection as $customer) {
+    Mage::getModel('customer/customer')->load($customer->getId())
+        ->setCustomerActive(1)
+        ->save();
 }
 
 $installer->endSetup();

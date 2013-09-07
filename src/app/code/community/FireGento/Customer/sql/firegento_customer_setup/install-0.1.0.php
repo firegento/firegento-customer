@@ -59,8 +59,8 @@ $installer->addAttributeToSet('customer', $attrSetId, 'General', $attributeName)
 
 Mage::getSingleton('eav/config')
     ->getAttribute('customer', $attributeName)
-	->setData('used_in_forms', array('adminhtml_customer'))
-	->save();
+    ->setData('used_in_forms', array('adminhtml_customer'))
+    ->save();
 
 /*
  * ATTRIBUTE: customer_logins_failed
