@@ -11,7 +11,7 @@ Branches
 Facts
 -----
 - Version: check [config.xml](https://github.com/firegento/firegento-customer/blob/master/src/app/code/community/FireGento/Customer/etc/config.xml)
-- [Extension auf GitHub](https://github.com/firegento/firegento-customer/)
+- [Extension on GitHub](https://github.com/firegento/firegento-customer/)
 
 Description
 -----------
