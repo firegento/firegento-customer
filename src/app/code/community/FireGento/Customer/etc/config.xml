@@ -116,6 +116,7 @@
                 <login_lock_time>900</login_lock_time>
                 <check_password_min_length>1</check_password_min_length>
                 <password_min_length>8</password_min_length>
+                <check_password_complexity>1</check_password_complexity>
             </password>
         </customer>
     </default>
