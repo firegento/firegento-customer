@@ -11,7 +11,7 @@
 "Your account is currently not active.", "Ihr Konto ist aktuell nicht aktiv."
 "Your account is locked due to too many failed login attempts.","Ihr Konto wurde aufgrund zu vieler fehlerhafter Login-Versuche leider gesperrt."
 "Your email address and your password can not be equal.","Ihre E-Mail Adresse darf nicht mit dem Passwort übereinstimmen."
-"Your password length must be greater than 8.","Ihr Passwort muss länger mindestens neun Zeichen lang sein."
+"Your password length must be greater than %s.","Ihr Passwort muss länger mindestens %s Zeichen lang sein."
 "Your password must contain at least one uppercase character, one lowercase character and one digit.","Ihr Passwort muss mindestens einen Groß- und Kleinbuchstaben, sowie mindestens eine Ziffer enthalten."
 "Check minimum Password length?","Überprüfe Mindest-Passwortlänge?"
 "Minimum Password length","Mindest-Passwortlänge"
