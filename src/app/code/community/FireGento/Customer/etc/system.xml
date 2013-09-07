@@ -49,6 +49,37 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>0</show_in_store>
                         </login_lock_time>
+                        <check_password_min_length translate="label">
+                            <label>Check minimum Password length?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1030</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </check_password_min_length>
+                        <password_min_length translate="label comment">
+                            <label>Minimum Password length</label>
+                            <comment>If minimum password lenght is set below or equal to zero the default value of 8 will be used.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1040</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <check_password_min_length>1</check_password_min_length>
+                            </depends>
+                        </password_min_length>
+                        <check_password_complexity translate="label comment">
+                            <label>Check password complexity?</label>
+                            <comment>If activated, password must contain at least one uppercase character, one lowercase character and one digit.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1050</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </check_password_complexity>
                     </fields>
                 </password>
             </groups>

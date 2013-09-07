@@ -31,9 +31,12 @@
  */
 class FireGento_Customer_Model_Observer
 {
-    const XML_PATH_LOGIN_ATTEMPTS     = 'customer/password/login_attempts';
+    const XML_PATH_LOGIN_ATTEMPTS = 'customer/password/login_attempts';
     const XML_PATH_LOGIN_ATTEMPT_SPAN = 'customer/password/login_attempt_span';
-    const XML_PATH_LOGIN_LOCK_TIME    = 'customer/password/login_lock_time';
+    const XML_PATH_LOGIN_LOCK_TIME = 'customer/password/login_lock_time';
+    const XML_PATH_CHECK_PASSWORD_MIN_LENGTH = 'customer/password/check_password_min_length';
+    const XML_PATH_PASSWORD_MIN_LENGTH = 'customer/password/password_min_length';
+    const XML_PATH_CHECK_PASSWORD_COMPLEXITY = 'customer/password/check_password_complexity';
 
     /**
      * Retrieve the helper class
@@ -276,6 +279,7 @@ class FireGento_Customer_Model_Observer
                 Mage::helper('core')->jsonEncode($error)
             );
         }
+
         return $this;
     }
 
@@ -284,9 +288,9 @@ class FireGento_Customer_Model_Observer
      * started, if a password was given within the running process.
      *
      * @throws FireGento_Customer_Exception
-     * @param string $email    Email Address
-     * @param string $password Password
-     * @return FireGento_Customer_Model_Observer Self.
+     * @param  string $email
+     * @param  string $password
+     * @return FireGento_Customer_Model_Observer
      */
     protected function _validatePassword($email, $password)
     {
@@ -295,32 +299,37 @@ class FireGento_Customer_Model_Observer
             return $this;
         }
 
-        /*
-         * VALIDATIONS
-         */
-        // password must not be equal to email
+        // Password must not be equal to email
         if ($email == $password) {
             throw new FireGento_Customer_Exception(
                 $this->_getHelper()->__('Your email address and your password can not be equal.')
             );
         }
 
-        // minimum password length = 9
-        if (strlen($password) < 9) {
-            throw new FireGento_Customer_Exception(
-                $this->_getHelper()->__('Your password length must be greater than 8.')
-            );
+        // Validate minimum password length
+        if (Mage::getStoreConfigFlag(self::XML_PATH_CHECK_PASSWORD_MIN_LENGTH)) {
+            $minLength = Mage::getStoreConfig(self::XML_PATH_PASSWORD_MIN_LENGTH);
+            if (!$minLength || $minLength <= 0) {
+                $minLength = 8;
+            }
+
+            if (strlen($password) <= $minLength) {
+                throw new FireGento_Customer_Exception(
+                    $this->_getHelper()->__('Your password length must be greater than %s.', $minLength)
+                );
+            }
         }
 
-        // password must be complex enough
-        if (preg_match('/[A-Z]/',$password) == 0
-            || preg_match('/[a-z]/',$password) == 0
-            || preg_match('/[0-9]/',$password) == 0
-        ) {
-            throw new FireGento_Customer_Exception(
-                $this->_getHelper()->__('Your password must contain at least one uppercase character, one lowercase character and one digit.')
-            );
+        // Validate password complexity
+        if (Mage::getStoreConfigFlag(self::XML_PATH_CHECK_PASSWORD_COMPLEXITY)) {
+            if (preg_match('/[A-Z]/', $password) == 0
+                || preg_match('/[a-z]/', $password) == 0
+                || preg_match('/[0-9]/', $password) == 0
+            ) {
+                throw new FireGento_Customer_Exception(
+                    $this->_getHelper()->__('Your password must contain at least one uppercase character, one lowercase character and one digit.')
+                );
+            }
         }
-        return $this;
     }
 }
