@@ -13,3 +13,6 @@
 "Your email address and your password can not be equal.","Ihre E-Mail Adresse darf nicht mit dem Passwort übereinstimmen."
 "Your password length must be greater than 8.","Ihr Passwort muss länger mindestens neun Zeichen lang sein."
 "Your password must contain at least one uppercase character, one lowercase character and one digit.","Ihr Passwort muss mindestens einen Groß- und Kleinbuchstaben, sowie mindestens eine Ziffer enthalten."
+"Check minimum Password length?","Überprüfe Mindest-Passwortlänge?"
+"Minimum Password length","Mindest-Passwortlänge"
+"If minimum password lenght is set below or equal to zero the default value of 8 will be used.","Wenn die Mindest-Passwortlänge kleiner oder gleich 0 ist, wird der Standardwert von 8 verwendet."

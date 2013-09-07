@@ -114,6 +114,8 @@
                 <login_attempts>5</login_attempts>
                 <login_attempt_span>900</login_attempt_span>
                 <login_lock_time>900</login_lock_time>
+                <check_password_min_length>1</check_password_min_length>
+                <password_min_length>8</password_min_length>
             </password>
         </customer>
     </default>
