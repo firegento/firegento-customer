@@ -17,7 +17,7 @@
  * @author    FireGento Team <team@firegento.com>
  * @copyright 2013 FireGento Team (http://www.firegento.de). All rights served.
  * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
- * @version   $$Id$$
+ * @version   $Id:$
  */
 /**
  * Helper class
@@ -27,7 +27,7 @@
  * @author    FireGento Team <team@firegento.com>
  * @copyright 2013 FireGento Team (http://www.firegento.de). All rights served.
  * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
- * @version   $$Id$$
+ * @version   $Id:$
  */
 class FireGento_Customer_Helper_Redirect extends FireGento_Customer_Helper_Data
 {

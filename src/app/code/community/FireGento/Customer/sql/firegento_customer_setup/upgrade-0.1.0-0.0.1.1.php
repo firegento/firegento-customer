@@ -15,9 +15,9 @@
  * @category  FireGento
  * @package   FireGento_Customer
  * @author    FireGento Team <team@firegento.com>
- * @copyright 2011 FireGento Team (http://www.firegento.de). All rights served.
+ * @copyright 2013 FireGento Team (http://www.firegento.com). All rights served.
  * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
- * @version   $$Id$$
+ * @version   $Id:$
  */
 /**
  * Setup script
@@ -25,9 +25,9 @@
  * @category  FireGento
  * @package   FireGento_Customer
  * @author    FireGento Team <team@firegento.com>
- * @copyright 2011 FireGento Team (http://www.firegento.de). All rights served.
+ * @copyright 2013 FireGento Team (http://www.firegento.com). All rights served.
  * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
- * @version   $$Id$$
+ * @version   $Id:$
  */
 
 /* @var $installer Mage_Eav_Model_Entity_Setup */
