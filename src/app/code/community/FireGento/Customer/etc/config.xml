@@ -23,6 +23,11 @@
         </FireGento_Customer>
     </modules>
     <global>
+        <blocks>
+            <firegento_customer>
+                <class>FireGento_Customer_Block</class>
+            </firegento_customer>
+        </blocks>
         <helpers>
             <firegento_customer>
                 <class>FireGento_Customer_Helper</class>
