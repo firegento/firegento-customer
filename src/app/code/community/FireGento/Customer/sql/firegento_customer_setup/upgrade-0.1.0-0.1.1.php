@@ -30,8 +30,12 @@
 $installer = $this;
 $installer->startSetup();
 
-// update customers
-$collection = Mage::getModel('customer/customer')->getCollection();
+/*
+ * Set all existing customers as active
+ */
+
+/* @var $collection Mage_Customer_Model_Resource_Customer_Collection */
+$collection = Mage::getResourceModel('customer/customer_collection');
 foreach ($collection as $customer) {
     Mage::getModel('customer/customer')->load($customer->getId())
         ->setCustomerActive(1)

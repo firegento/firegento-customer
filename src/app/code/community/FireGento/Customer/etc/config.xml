@@ -46,9 +46,6 @@
                     <module>FireGento_Customer</module>
                     <class>Mage_Eav_Model_Entity_Setup</class>
                 </setup>
-                <connection>
-                    <use>core_setup</use>
-                </connection>
             </firegento_customer_setup>
         </resources>
     </global>
