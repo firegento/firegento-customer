@@ -124,4 +124,11 @@
             </password>
         </customer>
     </default>
+    <phpunit>
+        <suite>
+            <modules>
+                <FireGento_Customer/>
+            </modules>
+        </suite>
+    </phpunit>
 </config>

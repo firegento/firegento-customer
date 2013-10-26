@@ -1,0 +1,5 @@
+module:
+  version: 0.1.1
+  code_pool: community
+  depends:
+    - Mage_Customer
