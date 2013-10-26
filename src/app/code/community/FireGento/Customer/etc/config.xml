@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <!--
 /**
- * This file is part of the FIREGENTO project.
+ * This file is part of a FireGento e.V. module.
  *
- * FireGento_Core is free software; you can redistribute it and/or
+ * This FireGento e.V. module is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License version 3 as
  * published by the Free Software Foundation.
  *
@@ -11,18 +11,25 @@
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
  * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
+ * @category  FireGento
+ * @package   FireGento_Customer
  * @author    FireGento Team <team@firegento.com>
- * @copyright 2011 FireGento Team (http://www.firegento.de). All rights served.
+ * @copyright 2013 FireGento Team (http://www.firegento.com)
  * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
  */
  -->
 <config>
     <modules>
         <FireGento_Customer>
-            <version>0.1.1</version>
+            <version>1.0.0</version>
         </FireGento_Customer>
     </modules>
     <global>
+        <blocks>
+            <firegento_customer>
+                <class>FireGento_Customer_Block</class>
+            </firegento_customer>
+        </blocks>
         <helpers>
             <firegento_customer>
                 <class>FireGento_Customer_Helper</class>
@@ -39,9 +46,6 @@
                     <module>FireGento_Customer</module>
                     <class>Mage_Eav_Model_Entity_Setup</class>
                 </setup>
-                <connection>
-                    <use>core_setup</use>
-                </connection>
             </firegento_customer_setup>
         </resources>
     </global>
@@ -114,7 +118,17 @@
                 <login_attempts>5</login_attempts>
                 <login_attempt_span>900</login_attempt_span>
                 <login_lock_time>900</login_lock_time>
+                <check_password_min_length>1</check_password_min_length>
+                <password_min_length>8</password_min_length>
+                <check_password_complexity>1</check_password_complexity>
             </password>
         </customer>
     </default>
+    <phpunit>
+        <suite>
+            <modules>
+                <FireGento_Customer/>
+            </modules>
+        </suite>
+    </phpunit>
 </config>

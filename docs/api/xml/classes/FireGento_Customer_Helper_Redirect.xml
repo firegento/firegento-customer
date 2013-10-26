@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.de/src#" full="FireGento_Customer_Helper_Redirect" namespace="" name="FireGento_Customer_Helper_Redirect" abstract="false" final="false" start="28" end="139">
+  <file path="/Users/rouven/Sites/firegento/.modman/firegento-customer/src/app/code/community/FireGento/Customer/Helper" file="Redirect.php" realpath="/Users/rouven/Sites/firegento/.modman/firegento-customer/src/app/code/community/FireGento/Customer/Helper/Redirect.php" size="4728" time="2013-10-26T12:18:35+02:00" unixtime="1382782715" sha1="b85306648a55c063e359e0f6c28bdf0698b55752"/>
+  <docblock>
+    <description compact="Redirect url helper for redirecting the customer if validations returned an error."/>
+    <category value="FireGento"/>
+    <package value="FireGento_Customer"/>
+    <author value="FireGento Team &lt;team@firegento.com&gt;"/>
+  </docblock>
+  <extends full="FireGento_Customer_Helper_Data" namespace="" name="FireGento_Customer_Helper_Data"/>
+  <method name="_loginPostRedirect" start="33" end="72" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Define target URL and redirect customer after logging in"/>
+    </docblock>
+  </method>
+  <method name="getRequest" start="79" end="82" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Retrieve the current request"/>
+      <return description="Request Object" type="object">
+        <type full="Mage_Core_Controller_Request_Http" namespace="" name="Mage_Core_Controller_Request_Http"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="getResponse" start="89" end="92" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Retrieve the current response"/>
+      <return description="Response Object" type="object">
+        <type full="Mage_Core_Controller_Response_Http" namespace="" name="Mage_Core_Controller_Response_Http"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="_getSession" start="99" end="102" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Retrieve customer session model object"/>
+      <return description="Customer Session" type="object">
+        <type full="Mage_Customer_Model_Session" namespace="" name="Mage_Customer_Model_Session"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="_isUrlInternal" start="110" end="126" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Check url to be used as internal"/>
+      <param description="Url to check" type="string" variable="$url"/>
+      <return description="Flag if url is internal" type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="url" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_redirectUrl" start="134" end="138" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Set redirect url into response"/>
+      <param description="Redirect URL" type="string" variable="$url"/>
+      <return type="object">
+        <type full="Mage_Core_Controller_Varien_Action" namespace="" name="Mage_Core_Controller_Varien_Action"/>
+      </return>
+    </docblock>
+    <parameter name="url" byreference="false" type="{unknown}"/>
+  </method>
+  <parent full="FireGento_Customer_Helper_Data" namepsace="" name="FireGento_Customer_Helper_Data">
+    <extends full="Mage_Customer_Helper_Data" namespace="" name="Mage_Customer_Helper_Data"/>
+  </parent>
+</class>

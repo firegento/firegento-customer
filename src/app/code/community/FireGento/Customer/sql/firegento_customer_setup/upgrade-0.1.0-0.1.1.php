@@ -19,13 +19,27 @@
  * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
  */
 /**
- * Custom exception class.
+ * Setup Script
  *
  * @category FireGento
  * @package  FireGento_Customer
  * @author   FireGento Team <team@firegento.com>
  */
-class FireGento_Customer_Exception extends Mage_Core_Exception
-{
 
+/* @var $installer Mage_Eav_Model_Entity_Setup */
+$installer = $this;
+$installer->startSetup();
+
+/*
+ * Set all existing customers as active
+ */
+
+/* @var $collection Mage_Customer_Model_Resource_Customer_Collection */
+$collection = Mage::getResourceModel('customer/customer_collection');
+foreach ($collection as $customer) {
+    Mage::getModel('customer/customer')->load($customer->getId())
+        ->setCustomerActive(1)
+        ->save();
 }
+
+$installer->endSetup();

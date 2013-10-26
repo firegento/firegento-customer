@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.de/src#" full="FireGento_Customer_Test_Config_Main" namespace="" name="FireGento_Customer_Test_Config_Main" abstract="false" final="false" start="28" end="68">
+  <file path="/Users/rouven/Sites/firegento/.modman/firegento-customer/src/app/code/community/FireGento/Customer/Test/Config" file="Main.php" realpath="/Users/rouven/Sites/firegento/.modman/firegento-customer/src/app/code/community/FireGento/Customer/Test/Config/Main.php" size="2319" time="2013-10-26T13:24:31+02:00" unixtime="1382786671" sha1="81b8e05053769ea16144a132bdc83f5114031247"/>
+  <docblock>
+    <description compact="PHPUnit Test Class"/>
+    <category value="FireGento"/>
+    <package value="FireGento_Customer"/>
+    <author value="FireGento Team &lt;team@firegento.com&gt;"/>
+  </docblock>
+  <extends full="EcomDev_PHPUnit_Test_Case_Config" namespace="" name="EcomDev_PHPUnit_Test_Case_Config"/>
+  <method name="testModuleConfig" start="33" end="42" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Check it the installed module has the correct module version"/>
+    </docblock>
+  </method>
+  <method name="testBlockAliases" start="47" end="50" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Check if the block aliases are returning the correct class names"/>
+    </docblock>
+  </method>
+  <method name="testHelperAliases" start="55" end="59" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Check if the helper aliases are returning the correct class names"/>
+    </docblock>
+  </method>
+  <method name="testModelAliases" start="64" end="67" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Check if the helper aliases are returning the correct class names"/>
+    </docblock>
+  </method>
+</class>

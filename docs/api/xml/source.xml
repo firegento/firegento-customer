@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<source xmlns="http://xml.phpdox.de/src#">
+  <dir name="src">
+    <dir name="app">
+      <dir name="code">
+        <dir name="community">
+          <dir name="FireGento">
+            <dir name="Customer">
+              <dir name="Block">
+                <file name="Password.php" size="1929" time="2013-10-26T12:12:00+02:00" unixtime="1382782320" sha1="65dc0de4ce28d270c3828088f355d9eba26845ed"/>
+              </dir>
+              <file name="Exception.php" size="1011" time="2013-10-26T12:18:56+02:00" unixtime="1382782736" sha1="6dcaac7823f278380819fa1b4880a0c8960f61a6"/>
+              <dir name="Helper">
+                <file name="Data.php" size="1031" time="2013-10-26T12:12:34+02:00" unixtime="1382782354" sha1="9ea538d9130adad33ba46b86058e3dd9b11bade6"/>
+                <file name="Redirect.php" size="4728" time="2013-10-26T12:18:35+02:00" unixtime="1382782715" sha1="b85306648a55c063e359e0f6c28bdf0698b55752"/>
+              </dir>
+              <dir name="Model">
+                <file name="Observer.php" size="12147" time="2013-10-26T12:23:42+02:00" unixtime="1382783022" sha1="ab04deaaf45d5b46e996b531864299df0c4b76f2"/>
+              </dir>
+              <dir name="sql">
+                <dir name="firegento_customer_setup">
+                  <file name="install-0.1.0.php" size="2759" time="2013-10-26T13:04:47+02:00" unixtime="1382785487" sha1="8dd091809def540b67357f0dba1e323881482ec1"/>
+                  <file name="upgrade-0.1.0-0.1.1.php" size="1399" time="2013-10-26T13:05:25+02:00" unixtime="1382785525" sha1="f59336ce70b0508dc39ca36d1f1ed79c41c19902"/>
+                  <file name="upgrade-0.1.1-1.0.0.php" size="1054" time="2013-10-26T13:45:54+02:00" unixtime="1382787954" sha1="55bc8ffa23790fbdc6af5b8dbf91067276caff5c"/>
+                </dir>
+              </dir>
+              <dir name="Test">
+                <dir name="Block">
+                  <file name="Password.php" size="1937" time="2013-10-26T13:38:10+02:00" unixtime="1382787490" sha1="e4759040ae4a953a8926f622000c4ddf68cd4d5f"/>
+                </dir>
+                <dir name="Config">
+                  <file name="Main.php" size="2319" time="2013-10-26T13:24:31+02:00" unixtime="1382786671" sha1="81b8e05053769ea16144a132bdc83f5114031247"/>
+                </dir>
+              </dir>
+            </dir>
+          </dir>
+        </dir>
+      </dir>
+    </dir>
+  </dir>
+</source>

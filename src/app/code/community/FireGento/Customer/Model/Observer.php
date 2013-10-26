@@ -1,8 +1,8 @@
 <?php
 /**
- * This file is part of the FIREGENTO project.
+ * This file is part of a FireGento e.V. module.
  *
- * FireGento_Core is free software; you can redistribute it and/or
+ * This FireGento e.V. module is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License version 3 as
  * published by the Free Software Foundation.
  *
@@ -15,30 +15,29 @@
  * @category  FireGento
  * @package   FireGento_Customer
  * @author    FireGento Team <team@firegento.com>
- * @copyright 2011 FireGento Team (http://www.firegento.de). All rights served.
+ * @copyright 2013 FireGento Team (http://www.firegento.com)
  * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
- * @version   $$Id$$
  */
 /**
- * Observer
+ * Observer for password validations
  *
- * @category  FireGento
- * @package   FireGento_Customer
- * @author    FireGento Team <team@firegento.com>
- * @copyright 2011 FireGento Team (http://www.firegento.de). All rights served.
- * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
- * @version   $$Id$$
+ * @category FireGento
+ * @package  FireGento_Customer
+ * @author   FireGento Team <team@firegento.com>
  */
 class FireGento_Customer_Model_Observer
 {
-    const XML_PATH_LOGIN_ATTEMPTS     = 'customer/password/login_attempts';
+    const XML_PATH_LOGIN_ATTEMPTS = 'customer/password/login_attempts';
     const XML_PATH_LOGIN_ATTEMPT_SPAN = 'customer/password/login_attempt_span';
-    const XML_PATH_LOGIN_LOCK_TIME    = 'customer/password/login_lock_time';
+    const XML_PATH_LOGIN_LOCK_TIME = 'customer/password/login_lock_time';
+    const XML_PATH_CHECK_PASSWORD_MIN_LENGTH = 'customer/password/check_password_min_length';
+    const XML_PATH_PASSWORD_MIN_LENGTH = 'customer/password/password_min_length';
+    const XML_PATH_CHECK_PASSWORD_COMPLEXITY = 'customer/password/check_password_complexity';
 
     /**
      * Retrieve the helper class
      *
-     * @return FireGento_Customer_Helper_Data Helper
+     * @return FireGento_Customer_Helper_Data Helper Object
      */
     protected function _getHelper()
     {
@@ -48,7 +47,7 @@ class FireGento_Customer_Model_Observer
     /**
      * Retrieve customer session model object
      *
-     * @return Mage_Customer_Model_Session
+     * @return Mage_Customer_Model_Session Customer Session
      */
     protected function _getSession()
     {
@@ -58,7 +57,7 @@ class FireGento_Customer_Model_Observer
     /**
      * Retrieve the current website ID
      *
-     * @return int Website ID
+     * @return int Current Website ID
      */
     public function _getWebsiteId()
     {
@@ -68,15 +67,12 @@ class FireGento_Customer_Model_Observer
     /**
      * Validates the customer password upon save.
      *
-     * @throws Exception
-     * @param Varien_Event_Observer $observer Observer
-     * @return FireGento_Customer_Model_Observer Self.
+     * @param Varien_Event_Observer $observer Observer Instance
      */
     public function customerSaveBefore(Varien_Event_Observer $observer)
     {
         $customer = $observer->getCustomer();
         $this->_validatePassword($customer->getEmail(), $customer->getPassword());
-        return $this;
     }
 
     /**
@@ -85,14 +81,13 @@ class FireGento_Customer_Model_Observer
      *
      * Observer for controller_action_predispatch_customer_account_loginPost event.
      *
-     * @param Varien_Event_Observer $observer Observer
-     * @return FireGento_Customer_Model_Observer Self.
+     * @param Varien_Event_Observer $observer Observer Instance
      */
     public function validateCustomerActivationBeforeLogin(Varien_Event_Observer $observer)
     {
         $controller = $observer->getControllerAction();
-        try {
 
+        try {
             $loginParams = $controller->getRequest()->getParam('login');
             if (isset($loginParams['username'])) {
                 $validator = new Zend_Validate_EmailAddress();
@@ -119,8 +114,7 @@ class FireGento_Customer_Model_Observer
                     );
                 }
             }
-        }
-        catch (Exception $e) {
+        } catch (Exception $e) {
             $this->_getSession()->addError($this->_getHelper()->__($e->getMessage()));
 
             // Set no-dispatch flag
@@ -133,15 +127,13 @@ class FireGento_Customer_Model_Observer
             // Redirect to login page
             Mage::helper('firegento_customer/redirect')->_loginPostRedirect();
         }
-        return $this;
     }
 
     /**
      * Validates if a customer account is active.
      *
+     * @param Mage_Customer_Model_Customer $customer Customer Model
      * @throws FireGento_Customer_Exception
-     * @param Mage_Customer_Model_Customer $customer Customer Instance
-     * @return void
      */
     protected function _validateCustomerActivationStatus($customer)
     {
@@ -155,6 +147,7 @@ class FireGento_Customer_Model_Observer
         /*
          * Check if the last failed login ban is over
          */
+
         $now          = time();
         $lockDuration = Mage::getStoreConfig(self::XML_PATH_LOGIN_LOCK_TIME);
         $lastAttempt  = $customer->getData('customer_last_login_failed');
@@ -168,6 +161,7 @@ class FireGento_Customer_Model_Observer
         /*
          * Check if the login attempts reached the ban limit
          */
+
         $loginAttempts = $customer->getData('customer_logins_failed');
         $attemptLock   = $loginAttempts >= Mage::getStoreConfig(self::XML_PATH_LOGIN_ATTEMPTS);
         $timeLock      = ($now - $lastAttempt < $lockDuration);
@@ -190,8 +184,7 @@ class FireGento_Customer_Model_Observer
      *
      * Observer for controller_action_postdispatch_customer_account_loginPost event
      *
-     * @param Varien_Event_Observer $observer Observer
-     * @return FireGento_Customer_Model_Observer Self.
+     * @param Varien_Event_Observer $observer Observer Instance
      */
     public function countFailedLogins(Varien_Event_Observer $observer)
     {
@@ -229,13 +222,12 @@ class FireGento_Customer_Model_Observer
                     }
                 }
             }
-        } else { // if (!$this->_getSession()->isLoggedIn())
+        } else {
             $customer = $this->_getSession()->getCustomer();
             $customer->setData('customer_logins_failed', 0)
                 ->setData('customer_last_login_failed', 0)
                 ->save();
         }
-        return $this;
     }
 
     /**
@@ -243,14 +235,14 @@ class FireGento_Customer_Model_Observer
      *
      * Observer for controller_action_postdispatch_checkout_onepage_saveBilling event.
      *
-     * @param Varien_Event_Observer $observer Observer
+     * @param  Varien_Event_Observer $observer Observer Instance
      * @return FireGento_Customer_Model_Observer Self.
      */
     public function checkPasswordStrengthAtOnepageRegistration(Varien_Event_Observer $observer)
     {
         $controllerAction = $observer->getControllerAction();
 
-        /** @var Mage_Checkout_Model_Type_Onepage $onepage */
+        /* @var $onepage Mage_Checkout_Model_Type_Onepage */
         $onepage = $controllerAction->getOnepage();
 
         // Check if customer wants to register
@@ -260,8 +252,8 @@ class FireGento_Customer_Model_Observer
         }
 
         // Get email and password from request params
-        $params   = $observer->getControllerAction()->getRequest()->getParam('billing');
-        $email    = $params['email'];
+        $params = $observer->getControllerAction()->getRequest()->getParam('billing');
+        $email = $params['email'];
         $password = $params['customer_password'];
 
         // Validate password and return error if invalid
@@ -272,10 +264,12 @@ class FireGento_Customer_Model_Observer
                 'error'   => -1,
                 'message' => $e->getMessage(),
             );
+
             $controllerAction->getResponse()->setBody(
                 Mage::helper('core')->jsonEncode($error)
             );
         }
+
         return $this;
     }
 
@@ -283,9 +277,9 @@ class FireGento_Customer_Model_Observer
      * Validates the password against some common criterias. The validation is only
      * started, if a password was given within the running process.
      *
+     * @param  string $email    Customer Email
+     * @param  string $password Customer Password
      * @throws FireGento_Customer_Exception
-     * @param string $email    Email Address
-     * @param string $password Password
      * @return FireGento_Customer_Model_Observer Self.
      */
     protected function _validatePassword($email, $password)
@@ -295,32 +289,37 @@ class FireGento_Customer_Model_Observer
             return $this;
         }
 
-        /*
-         * VALIDATIONS
-         */
-        // password must not be equal to email
+        // Password must not be equal to email
         if ($email == $password) {
             throw new FireGento_Customer_Exception(
                 $this->_getHelper()->__('Your email address and your password can not be equal.')
             );
         }
 
-        // minimum password length = 9
-        if (strlen($password) < 9) {
-            throw new FireGento_Customer_Exception(
-                $this->_getHelper()->__('Your password length must be greater than 8.')
-            );
+        // Validate minimum password length
+        if (Mage::getStoreConfigFlag(self::XML_PATH_CHECK_PASSWORD_MIN_LENGTH)) {
+            $minLength = Mage::getStoreConfig(self::XML_PATH_PASSWORD_MIN_LENGTH);
+            if (!$minLength || $minLength <= 0) {
+                $minLength = 8;
+            }
+
+            if (strlen($password) <= $minLength) {
+                throw new FireGento_Customer_Exception(
+                    $this->_getHelper()->__('Your password length must be greater than %s.', $minLength)
+                );
+            }
         }
 
-        // password must be complex enough
-        if (preg_match('/[A-Z]/',$password) == 0
-            || preg_match('/[a-z]/',$password) == 0
-            || preg_match('/[0-9]/',$password) == 0
-        ) {
-            throw new FireGento_Customer_Exception(
-                $this->_getHelper()->__('Your password must contain at least one uppercase character, one lowercase character and one digit.')
-            );
+        // Validate password complexity
+        if (Mage::getStoreConfigFlag(self::XML_PATH_CHECK_PASSWORD_COMPLEXITY)) {
+            if (preg_match('/[A-Z]/', $password) == 0
+                || preg_match('/[a-z]/', $password) == 0
+                || preg_match('/[0-9]/', $password) == 0
+            ) {
+                $msg = 'Your password must contain at least one uppercase character, ';
+                $msg .= 'one lowercase character and one digit.';
+                throw new FireGento_Customer_Exception($this->_getHelper()->__($msg));
+            }
         }
-        return $this;
     }
 }

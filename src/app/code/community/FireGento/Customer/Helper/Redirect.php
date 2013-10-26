@@ -1,8 +1,8 @@
 <?php
 /**
- * This file is part of the FIREGENTO project.
+ * This file is part of a FireGento e.V. module.
  *
- * FireGento_Core is free software; you can redistribute it and/or
+ * This FireGento e.V. module is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License version 3 as
  * published by the Free Software Foundation.
  *
@@ -15,23 +15,18 @@
  * @category  FireGento
  * @package   FireGento_Customer
  * @author    FireGento Team <team@firegento.com>
- * @copyright 2013 FireGento Team (http://www.firegento.de). All rights served.
+ * @copyright 2013 FireGento Team (http://www.firegento.com)
  * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
- * @version   $$Id$$
  */
 /**
- * Helper class
+ * Redirect url helper for redirecting the customer if validations returned an error.
  *
- * @category  FireGento
- * @package   FireGento_Customer
- * @author    FireGento Team <team@firegento.com>
- * @copyright 2013 FireGento Team (http://www.firegento.de). All rights served.
- * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
- * @version   $$Id$$
+ * @category FireGento
+ * @package  FireGento_Customer
+ * @author   FireGento Team <team@firegento.com>
  */
 class FireGento_Customer_Helper_Redirect extends FireGento_Customer_Helper_Data
 {
-	
     /**
      * Define target URL and redirect customer after logging in
      */
@@ -72,63 +67,69 @@ class FireGento_Customer_Helper_Redirect extends FireGento_Customer_Helper_Data
                 $session->setBeforeAuthUrl($session->getAfterAuthUrl(true));
             }
         }
+
         $this->_redirectUrl($session->getBeforeAuthUrl(true));
     }
-    
+
     /**
-     * 
-     * @return Mage_Core_Controller_Request_Http
+     * Retrieve the current request
+     *
+     * @return Mage_Core_Controller_Request_Http Request Object
      */
     public function getRequest()
     {
         return Mage::app()->getRequest();
     }
 
-	/**
-	 * 
-	 * @return Mage_Core_Controller_Response_Http
-	 */
-	public function getResponse()
-	{
-		return Mage::app()->getResponse();
-	}
+    /**
+     * Retrieve the current response
+     *
+     * @return Mage_Core_Controller_Response_Http Response Object
+     */
+    public function getResponse()
+    {
+        return Mage::app()->getResponse();
+    }
 
     /**
      * Retrieve customer session model object
      *
-     * @return Mage_Customer_Model_Session
+     * @return Mage_Customer_Model_Session Customer Session
      */
     public function _getSession()
     {
         return Mage::getSingleton('customer/session');
     }
-    
+
     /**
      * Check url to be used as internal
      *
-     * @param   string $url
-     * @return  bool
+     * @param  string $url Url to check
+     * @return bool Flag if url is internal
      */
     public function _isUrlInternal($url)
     {
         if (strpos($url, 'http') !== false) {
-            /**
+
+            /*
              * Url must start from base secure or base unsecure url
              */
+
             if ((strpos($url, Mage::app()->getStore()->getBaseUrl()) === 0)
                 || (strpos($url, Mage::app()->getStore()->getBaseUrl(Mage_Core_Model_Store::URL_TYPE_LINK, true)) === 0)
             ) {
                 return true;
             }
         }
+
         return false;
     }
-    
+
     /**
      * Set redirect url into response
      *
-     * @param   string $url
-     * @return  Mage_Core_Controller_Varien_Action
+     * @param  string $url Redirect URL
+     * @return Mage_Core_Controller_Varien_Action
      */
     public function _redirectUrl($url)
     {

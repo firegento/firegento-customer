@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "html" "">
+<html xmlns="http://www.w3.org/1999/xhtml" class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>FireGento_Customer - FireGento_Customer_Model_Observer - API Documentation</title>
+    <link href="../css/normalize.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="../css/styles.css" rel="stylesheet" type="text/css" media="all"/>
+  </head>
+  <body>
+    <div class="wrapper clearfix">
+      <div class="topbar clearfix">
+        <h1>
+          <a class="brand" href="../index.xhtml">FireGento_Customer - API Documentation</a>
+        </h1>
+        <ul class="nav">
+          <li class="active">
+            <a href="../index.xhtml">Overview</a>
+          </li>
+        </ul>
+      </div>
+      <div class="navigation">
+        <h3>Constants</h3>
+        <ul>
+          <li>
+            <a href="#XML_PATH_LOGIN_ATTEMPTS">XML_PATH_LOGIN_ATTEMPTS</a>
+          </li>
+          <li>
+            <a href="#XML_PATH_LOGIN_ATTEMPT_SPAN">XML_PATH_LOGIN_ATTEMPT_SPAN</a>
+          </li>
+          <li>
+            <a href="#XML_PATH_LOGIN_LOCK_TIME">XML_PATH_LOGIN_LOCK_TIME</a>
+          </li>
+          <li>
+            <a href="#XML_PATH_CHECK_PASSWORD_MIN_LENGTH">XML_PATH_CHECK_PASSWORD_MIN_LENGTH</a>
+          </li>
+          <li>
+            <a href="#XML_PATH_PASSWORD_MIN_LENGTH">XML_PATH_PASSWORD_MIN_LENGTH</a>
+          </li>
+          <li>
+            <a href="#XML_PATH_CHECK_PASSWORD_COMPLEXITY">XML_PATH_CHECK_PASSWORD_COMPLEXITY</a>
+          </li>
+        </ul>
+        <h3>Methods</h3>
+        <ul>
+          <li>
+            <a href="#_getHelper">_getHelper</a>
+          </li>
+          <li>
+            <a href="#_getSession">_getSession</a>
+          </li>
+          <li>
+            <a href="#_getWebsiteId">_getWebsiteId</a>
+          </li>
+          <li>
+            <a href="#_validateCustomerActivationStatus">_validateCustomerActivationStatus</a>
+          </li>
+          <li>
+            <a href="#_validatePassword">_validatePassword</a>
+          </li>
+          <li>
+            <a href="#checkPasswordStrengthAtOnepageRegistration">checkPasswordStrengthAtOnepageRegistration</a>
+          </li>
+          <li>
+            <a href="#countFailedLogins">countFailedLogins</a>
+          </li>
+          <li>
+            <a href="#customerSaveBefore">customerSaveBefore</a>
+          </li>
+          <li>
+            <a href="#validateCustomerActivationBeforeLogin">validateCustomerActivationBeforeLogin</a>
+          </li>
+        </ul>
+      </div>
+      <div class="content">
+        <h2><span style="font-size:60%">\</span>FireGento_Customer_Model_Observer</h2>
+        <div class="file-notice">
+          <p>Observer for password validations</p>
+        </div>
+        <ul class="fileinfos">
+          <li><b>Author: </b>FireGento Team &lt;team@firegento.com&gt;</li>
+        </ul>
+        <h3>Constants</h3>
+        <ul class="varlist">
+          <li><a name="XML_PATH_LOGIN_ATTEMPTS"/>XML_PATH_LOGIN_ATTEMPTS = 'customer/password/login_attempts'<hr/></li>
+          <li><a name="XML_PATH_LOGIN_ATTEMPT_SPAN"/>XML_PATH_LOGIN_ATTEMPT_SPAN = 'customer/password/login_attempt_span'<hr/></li>
+          <li><a name="XML_PATH_LOGIN_LOCK_TIME"/>XML_PATH_LOGIN_LOCK_TIME = 'customer/password/login_lock_time'<hr/></li>
+          <li><a name="XML_PATH_CHECK_PASSWORD_MIN_LENGTH"/>XML_PATH_CHECK_PASSWORD_MIN_LENGTH = 'customer/password/check_password_min_length'<hr/></li>
+          <li><a name="XML_PATH_PASSWORD_MIN_LENGTH"/>XML_PATH_PASSWORD_MIN_LENGTH = 'customer/password/password_min_length'<hr/></li>
+          <li><a name="XML_PATH_CHECK_PASSWORD_COMPLEXITY"/>XML_PATH_CHECK_PASSWORD_COMPLEXITY = 'customer/password/check_password_complexity'<hr/></li>
+        </ul>
+        <h3>Methods</h3>
+        <ul class="varlist">
+          <li>
+            <a name="_getWebsiteId"/>
+            <h4><span class="label public">public</span>_getWebsiteId<span style="font-size:90%;">(  )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Retrieve the current website ID</li>
+            </p>
+            <ul>
+              <h4 class="return">Returns:</h4>
+              <ul class="return">
+                <li>Current Website ID</li>
+              </ul>
+            </ul>
+          </li>
+          <li>
+            <a name="checkPasswordStrengthAtOnepageRegistration"/>
+            <h4><span class="label public">public</span>checkPasswordStrengthAtOnepageRegistration<span style="font-size:90%;">( <span class="param-type"><span title="\\Varien_Event_Observer">Varien_Event_Observer</span></span><strong> $observer</strong> )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Checks the password in checkout register mode<pre>Observer for controller_action_postdispatch_checkout_onepage_saveBilling event.</pre></li>
+            </p>
+            <ul>
+              <h4 class="param">Parameters:</h4>
+              <ul class="param">
+                <li><code>$observer</code> - Observer Instance</li>
+              </ul>
+            </ul>
+            <ul>
+              <h4 class="return">Returns:</h4>
+              <ul class="return">
+                <li>Self.</li>
+              </ul>
+            </ul>
+          </li>
+          <li>
+            <a name="countFailedLogins"/>
+            <h4><span class="label public">public</span>countFailedLogins<span style="font-size:90%;">( <span class="param-type"><span title="\\Varien_Event_Observer">Varien_Event_Observer</span></span><strong> $observer</strong> )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Counts the number of failed logins of a current users.<pre>Validate the controller postDispatch action of customer_account_loginPost.
+
+If user is not logged in at this point in time but login parameters given,
+the user had wrong credentials -&gt; so increment the number of failed logins.
+If otherwise the user is logged in successfully, we can forget about
+previous login failures.
+
+Observer for controller_action_postdispatch_customer_account_loginPost event</pre></li>
+            </p>
+            <ul>
+              <h4 class="param">Parameters:</h4>
+              <ul class="param">
+                <li><code>$observer</code> - Observer Instance</li>
+              </ul>
+            </ul>
+          </li>
+          <li>
+            <a name="customerSaveBefore"/>
+            <h4><span class="label public">public</span>customerSaveBefore<span style="font-size:90%;">( <span class="param-type"><span title="\\Varien_Event_Observer">Varien_Event_Observer</span></span><strong> $observer</strong> )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Validates the customer password upon save.</li>
+            </p>
+            <ul>
+              <h4 class="param">Parameters:</h4>
+              <ul class="param">
+                <li><code>$observer</code> - Observer Instance</li>
+              </ul>
+            </ul>
+          </li>
+          <li>
+            <a name="validateCustomerActivationBeforeLogin"/>
+            <h4><span class="label public">public</span>validateCustomerActivationBeforeLogin<span style="font-size:90%;">( <span class="param-type"><span title="\\Varien_Event_Observer">Varien_Event_Observer</span></span><strong> $observer</strong> )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Validates the customer before logging him in. A customer can be set to active/inactive and he can be inactivated if user tries to login with wrong user credentials.<pre>Observer for controller_action_predispatch_customer_account_loginPost event.</pre></li>
+            </p>
+            <ul>
+              <h4 class="param">Parameters:</h4>
+              <ul class="param">
+                <li><code>$observer</code> - Observer Instance</li>
+              </ul>
+            </ul>
+          </li>
+          <li>
+            <a name="_getHelper"/>
+            <h4><span class="label protected">protected</span>_getHelper<span style="font-size:90%;">(  )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Retrieve the helper class</li>
+            </p>
+            <ul>
+              <h4 class="return">Returns:</h4>
+              <ul class="return">
+                <li>Helper Object</li>
+              </ul>
+            </ul>
+          </li>
+          <li>
+            <a name="_getSession"/>
+            <h4><span class="label protected">protected</span>_getSession<span style="font-size:90%;">(  )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Retrieve customer session model object</li>
+            </p>
+            <ul>
+              <h4 class="return">Returns:</h4>
+              <ul class="return">
+                <li>Customer Session</li>
+              </ul>
+            </ul>
+          </li>
+          <li>
+            <a name="_validateCustomerActivationStatus"/>
+            <h4><span class="label protected">protected</span>_validateCustomerActivationStatus<span style="font-size:90%;">( <span class="param-type"><span title="Mage_Customer_Model_Customer">Mage_Customer_Model_Customer</span></span><strong> $customer</strong> )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Validates if a customer account is active.</li>
+            </p>
+            <ul>
+              <h4 class="param">Parameters:</h4>
+              <ul class="param">
+                <li><code>$customer</code> - Customer Model</li>
+              </ul>
+            </ul>
+            <ul>
+              <h4 class="throws">Throws:</h4>
+              <ul class="throws">
+                <li>
+                  <code>FireGento_Customer_Exception</code>
+                </li>
+              </ul>
+            </ul>
+          </li>
+          <li>
+            <a name="_validatePassword"/>
+            <h4><span class="label protected">protected</span>_validatePassword<span style="font-size:90%;">( <span class="param-type">string</span><strong> $email</strong>, <span class="param-type">string</span><strong> $password</strong> )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Validates the password against some common criterias. The validation is only started, if a password was given within the running process.</li>
+            </p>
+            <ul>
+              <h4 class="param">Parameters:</h4>
+              <ul class="param">
+                <li><code>$email</code> - Customer Email</li>
+                <li><code>$password</code> - Customer Password</li>
+              </ul>
+            </ul>
+            <ul>
+              <h4 class="return">Returns:</h4>
+              <ul class="return">
+                <li>Self.</li>
+              </ul>
+            </ul>
+            <ul>
+              <h4 class="throws">Throws:</h4>
+              <ul class="throws">
+                <li>
+                  <code>FireGento_Customer_Exception</code>
+                </li>
+              </ul>
+            </ul>
+          </li>
+        </ul>
+        <div class="footer">Generated using phpDox 0.5 - Copyright (C) 2010 - 2013 by Arne Blankerts</div>
+      </div>
+    </div>
+  </body>
+</html>

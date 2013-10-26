@@ -19,13 +19,15 @@
  * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
  */
 /**
- * Custom exception class.
+ * Setup Script
  *
  * @category FireGento
  * @package  FireGento_Customer
  * @author   FireGento Team <team@firegento.com>
  */
-class FireGento_Customer_Exception extends Mage_Core_Exception
-{
 
-}
+/* @var $installer Mage_Eav_Model_Entity_Setup */
+$installer = $this;
+$installer->startSetup();
+
+$installer->endSetup();

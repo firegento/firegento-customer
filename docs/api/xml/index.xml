@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<index xmlns="http://xml.phpdox.de/src#">
+  <namespace name="">
+    <class name="FireGento_Customer_Block_Password" src="/Users/rouven/Sites/firegento/.modman/firegento-customer/src/app/code/community/FireGento/Customer/Block/Password.php" xml="classes/FireGento_Customer_Block_Password.xml"/>
+    <class name="FireGento_Customer_Exception" src="/Users/rouven/Sites/firegento/.modman/firegento-customer/src/app/code/community/FireGento/Customer/Exception.php" xml="classes/FireGento_Customer_Exception.xml"/>
+    <class name="FireGento_Customer_Helper_Data" src="/Users/rouven/Sites/firegento/.modman/firegento-customer/src/app/code/community/FireGento/Customer/Helper/Data.php" xml="classes/FireGento_Customer_Helper_Data.xml"/>
+    <class name="FireGento_Customer_Helper_Redirect" src="/Users/rouven/Sites/firegento/.modman/firegento-customer/src/app/code/community/FireGento/Customer/Helper/Redirect.php" xml="classes/FireGento_Customer_Helper_Redirect.xml"/>
+    <class name="FireGento_Customer_Model_Observer" src="/Users/rouven/Sites/firegento/.modman/firegento-customer/src/app/code/community/FireGento/Customer/Model/Observer.php" xml="classes/FireGento_Customer_Model_Observer.xml"/>
+    <class name="FireGento_Customer_Test_Block_Password" src="/Users/rouven/Sites/firegento/.modman/firegento-customer/src/app/code/community/FireGento/Customer/Test/Block/Password.php" xml="classes/FireGento_Customer_Test_Block_Password.xml"/>
+    <class name="FireGento_Customer_Test_Config_Main" src="/Users/rouven/Sites/firegento/.modman/firegento-customer/src/app/code/community/FireGento/Customer/Test/Config/Main.php" xml="classes/FireGento_Customer_Test_Config_Main.xml"/>
+  </namespace>
+</index>
