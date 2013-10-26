@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.de/src#" full="FireGento_Customer_Model_Observer" namespace="" name="FireGento_Customer_Model_Observer" abstract="false" final="false" start="28" end="325">
+  <file path="/Users/rouven/Sites/firegento/.modman/firegento-customer/src/app/code/community/FireGento/Customer/Model" file="Observer.php" realpath="/Users/rouven/Sites/firegento/.modman/firegento-customer/src/app/code/community/FireGento/Customer/Model/Observer.php" size="12147" time="2013-10-26T12:23:42+02:00" unixtime="1382783022" sha1="ab04deaaf45d5b46e996b531864299df0c4b76f2"/>
+  <docblock>
+    <description compact="Observer for password validations"/>
+    <category value="FireGento"/>
+    <package value="FireGento_Customer"/>
+    <author value="FireGento Team &lt;team@firegento.com&gt;"/>
+  </docblock>
+  <constant name="XML_PATH_LOGIN_ATTEMPTS" value="'customer/password/login_attempts'"/>
+  <constant name="XML_PATH_LOGIN_ATTEMPT_SPAN" value="'customer/password/login_attempt_span'"/>
+  <constant name="XML_PATH_LOGIN_LOCK_TIME" value="'customer/password/login_lock_time'"/>
+  <constant name="XML_PATH_CHECK_PASSWORD_MIN_LENGTH" value="'customer/password/check_password_min_length'"/>
+  <constant name="XML_PATH_PASSWORD_MIN_LENGTH" value="'customer/password/password_min_length'"/>
+  <constant name="XML_PATH_CHECK_PASSWORD_COMPLEXITY" value="'customer/password/check_password_complexity'"/>
+  <method name="_getHelper" start="42" end="45" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Retrieve the helper class"/>
+      <return description="Helper Object" type="object">
+        <type full="FireGento_Customer_Helper_Data" namespace="" name="FireGento_Customer_Helper_Data"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="_getSession" start="52" end="55" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Retrieve customer session model object"/>
+      <return description="Customer Session" type="object">
+        <type full="Mage_Customer_Model_Session" namespace="" name="Mage_Customer_Model_Session"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="_getWebsiteId" start="62" end="65" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Retrieve the current website ID"/>
+      <return description="Current Website ID" type="int"/>
+    </docblock>
+  </method>
+  <method name="customerSaveBefore" start="72" end="76" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Validates the customer password upon save."/>
+      <param description="Observer Instance" type="object" variable="$observer">
+        <type full="Varien_Event_Observer" namespace="" name="Varien_Event_Observer"/>
+      </param>
+    </docblock>
+    <parameter name="observer" byreference="false" type="object">
+      <type full="\\Varien_Event_Observer" namespace="\" name="Varien_Event_Observer"/>
+    </parameter>
+  </method>
+  <method name="validateCustomerActivationBeforeLogin" start="86" end="130" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Validates the customer before logging him in. A customer can be set to active/inactive and he can be inactivated if user tries to login with wrong user credentials.">Observer for controller_action_predispatch_customer_account_loginPost event.</description>
+      <param description="Observer Instance" type="object" variable="$observer">
+        <type full="Varien_Event_Observer" namespace="" name="Varien_Event_Observer"/>
+      </param>
+    </docblock>
+    <parameter name="observer" byreference="false" type="object">
+      <type full="\\Varien_Event_Observer" namespace="\" name="Varien_Event_Observer"/>
+    </parameter>
+  </method>
+  <method name="_validateCustomerActivationStatus" start="138" end="174" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Validates if a customer account is active."/>
+      <param description="Customer Model" type="object" variable="$customer">
+        <type full="Mage_Customer_Model_Customer" namespace="" name="Mage_Customer_Model_Customer"/>
+      </param>
+      <throws value="FireGento_Customer_Exception"/>
+    </docblock>
+    <parameter name="customer" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="countFailedLogins" start="189" end="231" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Counts the number of failed logins of a current users.">Validate the controller postDispatch action of customer_account_loginPost.
+
+If user is not logged in at this point in time but login parameters given,
+the user had wrong credentials -&gt; so increment the number of failed logins.
+If otherwise the user is logged in successfully, we can forget about
+previous login failures.
+
+Observer for controller_action_postdispatch_customer_account_loginPost event</description>
+      <param description="Observer Instance" type="object" variable="$observer">
+        <type full="Varien_Event_Observer" namespace="" name="Varien_Event_Observer"/>
+      </param>
+    </docblock>
+    <parameter name="observer" byreference="false" type="object">
+      <type full="\\Varien_Event_Observer" namespace="\" name="Varien_Event_Observer"/>
+    </parameter>
+  </method>
+  <method name="checkPasswordStrengthAtOnepageRegistration" start="241" end="274" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Checks the password in checkout register mode">Observer for controller_action_postdispatch_checkout_onepage_saveBilling event.</description>
+      <param description="Observer Instance" type="object" variable="$observer">
+        <type full="Varien_Event_Observer" namespace="" name="Varien_Event_Observer"/>
+      </param>
+      <return description="Self." type="object">
+        <type full="FireGento_Customer_Model_Observer" namespace="" name="FireGento_Customer_Model_Observer"/>
+      </return>
+    </docblock>
+    <parameter name="observer" byreference="false" type="object">
+      <type full="\\Varien_Event_Observer" namespace="\" name="Varien_Event_Observer"/>
+    </parameter>
+  </method>
+  <method name="_validatePassword" start="285" end="324" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Validates the password against some common criterias. The validation is only started, if a password was given within the running process."/>
+      <param description="Customer Email" type="string" variable="$email"/>
+      <param description="Customer Password" type="string" variable="$password"/>
+      <throws value="FireGento_Customer_Exception"/>
+      <return description="Self." type="object">
+        <type full="FireGento_Customer_Model_Observer" namespace="" name="FireGento_Customer_Model_Observer"/>
+      </return>
+    </docblock>
+    <parameter name="email" byreference="false" type="{unknown}"/>
+    <parameter name="password" byreference="false" type="{unknown}"/>
+  </method>
+</class>

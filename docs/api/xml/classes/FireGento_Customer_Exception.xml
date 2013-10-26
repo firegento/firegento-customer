@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.de/src#" full="FireGento_Customer_Exception" namespace="" name="FireGento_Customer_Exception" abstract="false" final="false" start="28" end="31">
+  <file path="/Users/rouven/Sites/firegento/.modman/firegento-customer/src/app/code/community/FireGento/Customer" file="Exception.php" realpath="/Users/rouven/Sites/firegento/.modman/firegento-customer/src/app/code/community/FireGento/Customer/Exception.php" size="1011" time="2013-10-26T12:18:56+02:00" unixtime="1382782736" sha1="6dcaac7823f278380819fa1b4880a0c8960f61a6"/>
+  <docblock>
+    <description compact="Custom exception class."/>
+    <category value="FireGento"/>
+    <package value="FireGento_Customer"/>
+    <author value="FireGento Team &lt;team@firegento.com&gt;"/>
+  </docblock>
+  <extends full="Mage_Core_Exception" namespace="" name="Mage_Core_Exception"/>
+</class>
