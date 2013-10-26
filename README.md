@@ -35,6 +35,18 @@ Installation Instructions
 2. Clear the cache, logout from the admin panel and then login again.
 3. You can now configure the extenion via *System -> Configuration -> Customer -> Customer Configuration -> Password*
 
+Uninstallation
+--------------
+1. Remove all extension files from your Magento installation
+2. Run the following sql script in your database:
+
+```sql
+DELETE FROM eav_attribute WHERE attribute_code = 'customer_active';
+DELETE FROM eav_attribute WHERE attribute_code = 'customer_logins_failed';
+DELETE FROM eav_attribute WHERE attribute_code = 'customer_last_login_failed';
+```
+
+
 Support
 -------
 If you have any issues with this extension, open an issue on [GitHub](https://github.com/firegento/firegento-customer/issues).
@@ -45,13 +57,14 @@ Any contribution is highly appreciated. The best way to contribute code is to op
 
 Developer
 ---------
-- Website: [http://firegento.com](http://firegento.com)
-- Twitter: [@firegento](https://twitter.com/firegento)
+FireGento Team
+* Website: [http://firegento.com](http://firegento.com)
+* Twitter: [@firegento](https://twitter.com/firegento)
 
-Licence
+License
 -------
 [GNU General Public License, version 3 (GPLv3)](http://opensource.org/licenses/gpl-3.0)
 
 Copyright
 ---------
-(c) 2013 FireGento
+(c) 2013 FireGento Team
