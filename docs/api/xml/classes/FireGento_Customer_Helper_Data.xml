@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.de/src#" full="FireGento_Customer_Helper_Data" namespace="" name="FireGento_Customer_Helper_Data" abstract="false" final="false" start="28" end="31">
+  <file path="/Users/rouven/Sites/firegento/.modman/firegento-customer/src/app/code/community/FireGento/Customer/Helper" file="Data.php" realpath="/Users/rouven/Sites/firegento/.modman/firegento-customer/src/app/code/community/FireGento/Customer/Helper/Data.php" size="1031" time="2013-10-26T12:12:34+02:00" unixtime="1382782354" sha1="9ea538d9130adad33ba46b86058e3dd9b11bade6"/>
+  <docblock>
+    <description compact="Helper class for translations, etc."/>
+    <category value="FireGento"/>
+    <package value="FireGento_Customer"/>
+    <author value="FireGento Team &lt;team@firegento.com&gt;"/>
+  </docblock>
+  <extends full="Mage_Customer_Helper_Data" namespace="" name="Mage_Customer_Helper_Data"/>
+  <extender full="FireGento_Customer_Helper_Redirect" namespace="" name="FireGento_Customer_Helper_Redirect"/>
+</class>
