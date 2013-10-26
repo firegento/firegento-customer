@@ -1,8 +1,8 @@
 <?php
 /**
- * This file is part of the FIREGENTO project.
+ * This file is part of a FireGento e.V. module.
  *
- * FireGento_Core is free software; you can redistribute it and/or
+ * This FireGento e.V. module is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License version 3 as
  * published by the Free Software Foundation.
  *
@@ -15,19 +15,15 @@
  * @category  FireGento
  * @package   FireGento_Customer
  * @author    FireGento Team <team@firegento.com>
- * @copyright 2013 FireGento Team (http://www.firegento.com). All rights served.
+ * @copyright 2013 FireGento Team (http://www.firegento.com)
  * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
- * @version   $Id:$
  */
 /**
- * Helper class
+ * Adds the custom password validation rules to the page if activated
  *
- * @category  FireGento
- * @package   FireGento_Customer
- * @author    FireGento Team <team@firegento.com>
- * @copyright 2013 FireGento Team (http://www.firegento.com). All rights served.
- * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
- * @version   $Id:$
+ * @category FireGento
+ * @package  FireGento_Customer
+ * @author   FireGento Team <team@firegento.com>
  */
 class FireGento_Customer_Block_Password extends Mage_Core_Block_Template
 {
@@ -43,7 +39,7 @@ class FireGento_Customer_Block_Password extends Mage_Core_Block_Template
     /**
      * Retrieve the minimum password length
      *
-     * @return int
+     * @return int Minimum Password length
      */
     public function getMinimumPasswordLength()
     {
@@ -58,7 +54,7 @@ class FireGento_Customer_Block_Password extends Mage_Core_Block_Template
     /**
      * Deactivate output if not activated
      *
-     * @return string
+     * @return string Rendered output
      */
     protected function _toHtml()
     {

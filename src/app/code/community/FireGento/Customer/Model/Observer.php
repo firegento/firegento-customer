@@ -1,8 +1,8 @@
 <?php
 /**
- * This file is part of the FIREGENTO project.
+ * This file is part of a FireGento e.V. module.
  *
- * FireGento_Core is free software; you can redistribute it and/or
+ * This FireGento e.V. module is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License version 3 as
  * published by the Free Software Foundation.
  *
@@ -15,19 +15,15 @@
  * @category  FireGento
  * @package   FireGento_Customer
  * @author    FireGento Team <team@firegento.com>
- * @copyright 2013 FireGento Team (http://www.firegento.com). All rights served.
+ * @copyright 2013 FireGento Team (http://www.firegento.com)
  * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
- * @version   $Id:$
  */
 /**
- * Observer
+ * Observer for password validations
  *
- * @category  FireGento
- * @package   FireGento_Customer
- * @author    FireGento Team <team@firegento.com>
- * @copyright 2013 FireGento Team (http://www.firegento.com). All rights served.
- * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
- * @version   $Id:$
+ * @category FireGento
+ * @package  FireGento_Customer
+ * @author   FireGento Team <team@firegento.com>
  */
 class FireGento_Customer_Model_Observer
 {
@@ -41,7 +37,7 @@ class FireGento_Customer_Model_Observer
     /**
      * Retrieve the helper class
      *
-     * @return FireGento_Customer_Helper_Data
+     * @return FireGento_Customer_Helper_Data Helper Object
      */
     protected function _getHelper()
     {
@@ -51,7 +47,7 @@ class FireGento_Customer_Model_Observer
     /**
      * Retrieve customer session model object
      *
-     * @return Mage_Customer_Model_Session
+     * @return Mage_Customer_Model_Session Customer Session
      */
     protected function _getSession()
     {
@@ -61,7 +57,7 @@ class FireGento_Customer_Model_Observer
     /**
      * Retrieve the current website ID
      *
-     * @return int
+     * @return int Current Website ID
      */
     public function _getWebsiteId()
     {
@@ -71,8 +67,7 @@ class FireGento_Customer_Model_Observer
     /**
      * Validates the customer password upon save.
      *
-     * @throws Exception
-     * @param  Varien_Event_Observer $observer
+     * @param Varien_Event_Observer $observer Observer Instance
      */
     public function customerSaveBefore(Varien_Event_Observer $observer)
     {
@@ -86,7 +81,7 @@ class FireGento_Customer_Model_Observer
      *
      * Observer for controller_action_predispatch_customer_account_loginPost event.
      *
-     * @param Varien_Event_Observer $observer
+     * @param Varien_Event_Observer $observer Observer Instance
      */
     public function validateCustomerActivationBeforeLogin(Varien_Event_Observer $observer)
     {
@@ -137,8 +132,8 @@ class FireGento_Customer_Model_Observer
     /**
      * Validates if a customer account is active.
      *
+     * @param Mage_Customer_Model_Customer $customer Customer Model
      * @throws FireGento_Customer_Exception
-     * @param  Mage_Customer_Model_Customer $customer
      */
     protected function _validateCustomerActivationStatus($customer)
     {
@@ -189,7 +184,7 @@ class FireGento_Customer_Model_Observer
      *
      * Observer for controller_action_postdispatch_customer_account_loginPost event
      *
-     * @param Varien_Event_Observer $observer
+     * @param Varien_Event_Observer $observer Observer Instance
      */
     public function countFailedLogins(Varien_Event_Observer $observer)
     {
@@ -240,14 +235,14 @@ class FireGento_Customer_Model_Observer
      *
      * Observer for controller_action_postdispatch_checkout_onepage_saveBilling event.
      *
-     * @param  Varien_Event_Observer $observer
-     * @return FireGento_Customer_Model_Observer
+     * @param  Varien_Event_Observer $observer Observer Instance
+     * @return FireGento_Customer_Model_Observer Self.
      */
     public function checkPasswordStrengthAtOnepageRegistration(Varien_Event_Observer $observer)
     {
         $controllerAction = $observer->getControllerAction();
 
-        /** @var Mage_Checkout_Model_Type_Onepage $onepage */
+        /* @var $onepage Mage_Checkout_Model_Type_Onepage */
         $onepage = $controllerAction->getOnepage();
 
         // Check if customer wants to register
@@ -257,8 +252,8 @@ class FireGento_Customer_Model_Observer
         }
 
         // Get email and password from request params
-        $params   = $observer->getControllerAction()->getRequest()->getParam('billing');
-        $email    = $params['email'];
+        $params = $observer->getControllerAction()->getRequest()->getParam('billing');
+        $email = $params['email'];
         $password = $params['customer_password'];
 
         // Validate password and return error if invalid
@@ -282,10 +277,10 @@ class FireGento_Customer_Model_Observer
      * Validates the password against some common criterias. The validation is only
      * started, if a password was given within the running process.
      *
+     * @param  string $email    Customer Email
+     * @param  string $password Customer Password
      * @throws FireGento_Customer_Exception
-     * @param  string $email
-     * @param  string $password
-     * @return FireGento_Customer_Model_Observer
+     * @return FireGento_Customer_Model_Observer Self.
      */
     protected function _validatePassword($email, $password)
     {
@@ -321,9 +316,9 @@ class FireGento_Customer_Model_Observer
                 || preg_match('/[a-z]/', $password) == 0
                 || preg_match('/[0-9]/', $password) == 0
             ) {
-                throw new FireGento_Customer_Exception(
-                    $this->_getHelper()->__('Your password must contain at least one uppercase character, one lowercase character and one digit.')
-                );
+                $msg = 'Your password must contain at least one uppercase character, ';
+                $msg .= 'one lowercase character and one digit.';
+                throw new FireGento_Customer_Exception($this->_getHelper()->__($msg));
             }
         }
     }

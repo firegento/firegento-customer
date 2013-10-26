@@ -1,8 +1,8 @@
 <?php
 /**
- * This file is part of the FIREGENTO project.
+ * This file is part of a FireGento e.V. module.
  *
- * FireGento_Core is free software; you can redistribute it and/or
+ * This FireGento e.V. module is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License version 3 as
  * published by the Free Software Foundation.
  *
@@ -15,19 +15,15 @@
  * @category  FireGento
  * @package   FireGento_Customer
  * @author    FireGento Team <team@firegento.com>
- * @copyright 2013 FireGento Team (http://www.firegento.de). All rights served.
+ * @copyright 2013 FireGento Team (http://www.firegento.com)
  * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
- * @version   $Id:$
  */
 /**
- * Helper class
+ * Redirect url helper for redirecting the customer if validations returned an error.
  *
- * @category  FireGento
- * @package   FireGento_Customer
- * @author    FireGento Team <team@firegento.com>
- * @copyright 2013 FireGento Team (http://www.firegento.de). All rights served.
- * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
- * @version   $Id:$
+ * @category FireGento
+ * @package  FireGento_Customer
+ * @author   FireGento Team <team@firegento.com>
  */
 class FireGento_Customer_Helper_Redirect extends FireGento_Customer_Helper_Data
 {
@@ -71,13 +67,14 @@ class FireGento_Customer_Helper_Redirect extends FireGento_Customer_Helper_Data
                 $session->setBeforeAuthUrl($session->getAfterAuthUrl(true));
             }
         }
+
         $this->_redirectUrl($session->getBeforeAuthUrl(true));
     }
 
     /**
      * Retrieve the current request
      *
-     * @return Mage_Core_Controller_Request_Http
+     * @return Mage_Core_Controller_Request_Http Request Object
      */
     public function getRequest()
     {
@@ -87,7 +84,7 @@ class FireGento_Customer_Helper_Redirect extends FireGento_Customer_Helper_Data
     /**
      * Retrieve the current response
      *
-     * @return Mage_Core_Controller_Response_Http
+     * @return Mage_Core_Controller_Response_Http Response Object
      */
     public function getResponse()
     {
@@ -97,7 +94,7 @@ class FireGento_Customer_Helper_Redirect extends FireGento_Customer_Helper_Data
     /**
      * Retrieve customer session model object
      *
-     * @return Mage_Customer_Model_Session
+     * @return Mage_Customer_Model_Session Customer Session
      */
     public function _getSession()
     {
@@ -107,8 +104,8 @@ class FireGento_Customer_Helper_Redirect extends FireGento_Customer_Helper_Data
     /**
      * Check url to be used as internal
      *
-     * @param  string $url
-     * @return bool
+     * @param  string $url Url to check
+     * @return bool Flag if url is internal
      */
     public function _isUrlInternal($url)
     {
@@ -131,7 +128,7 @@ class FireGento_Customer_Helper_Redirect extends FireGento_Customer_Helper_Data
     /**
      * Set redirect url into response
      *
-     * @param  string $url
+     * @param  string $url Redirect URL
      * @return Mage_Core_Controller_Varien_Action
      */
     public function _redirectUrl($url)
