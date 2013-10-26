@@ -18,7 +18,7 @@
  -->
 <layout version="0.1.0">
     <default>
-        <reference name="after_body_start">
+        <reference name="before_body_end">
             <block type="firegento_customer/password" name="firegento.customer.password"/>
         </reference>
     </default>
