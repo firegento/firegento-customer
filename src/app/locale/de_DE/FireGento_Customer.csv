@@ -18,4 +18,4 @@
 "If minimum password lenght is set below or equal to zero the default value of 8 will be used.","Wenn die Mindest-Passwortlänge kleiner oder gleich 0 ist, wird der Standardwert von 8 verwendet."
 "Check password complexity?","Überprüfe Passwort-Komplexität?"
 "If activated, password must contain at least one uppercase character, one lowercase character and one digit.","Wenn aktiviert, muss das Passwort muss mindestens einen Groß- und Kleinbuchstaben, sowie mindestens eine Ziffer enthalten."
-"Please enter %d or more characters. Leading or trailing spaces will be ignored.","Bitte geben Sie mehr als %d Zeichen ein. Leerzeichen am Anfang und am Ende werden ignoriert."
+"Please enter %d or more characters. Leading or trailing spaces will be ignored.","Bitte geben Sie mindestens %d Zeichen ein. Leerzeichen am Anfang und am Ende werden ignoriert."
