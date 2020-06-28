@@ -108,20 +108,6 @@ If you have any issues with this extension, open an issue on [GitHub](https://gi
 
 Any contribution is highly appreciated. The best way to contribute code is to open a [pull request on GitHub](https://help.github.com/articles/using-pull-requests).
 
-## Developer
-
-FireGento Team
-* Website: [http://firegento.com](http://firegento.com)
-* Twitter: [@firegento](https://twitter.com/firegento)
-
-## License
-
-[GNU General Public License, version 3 (GPLv3)](http://opensource.org/licenses/gpl-3.0)
-
-## Copyright
-
-(c) 2013 FireGento Team
-
 ## Contributors ✨
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
@@ -149,3 +135,16 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+
+## Developer
+
+FireGento Team
+* Website: [http://firegento.com](http://firegento.com)
+* Twitter: [@firegento](https://twitter.com/firegento)
+## License
+
+[GNU General Public License, version 3 (GPLv3)](http://opensource.org/licenses/gpl-3.0)
+
+## Copyright
+
+(c) 2013 FireGento Team
