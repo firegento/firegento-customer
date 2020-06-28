@@ -1,6 +1,6 @@
 FireGento_Customer
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-6-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-7-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 ==================
 
@@ -139,6 +139,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="http://vinaikopp.com/"><img src="https://avatars0.githubusercontent.com/u/72463?v=4" width="100px;" alt=""/><br /><sub><b>Vinai Kopp</b></sub></a><br /><a href="https://github.com/firegento/firegento-customer/commits?author=Vinai" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/pixelhed"><img src="https://avatars2.githubusercontent.com/u/1169770?v=4" width="100px;" alt=""/><br /><sub><b>Andre Flitsch</b></sub></a><br /><a href="https://github.com/firegento/firegento-customer/commits?author=pixelhed" title="Code">💻</a></td>
     <td align="center"><a href="https://www.matthias-zeis.com/"><img src="https://avatars2.githubusercontent.com/u/371060?v=4" width="100px;" alt=""/><br /><sub><b>Matthias Zeis</b></sub></a><br /><a href="https://github.com/firegento/firegento-customer/commits?author=mzeis" title="Code">💻</a></td>
+    <td align="center"><a href="https://muench.dev/"><img src="https://avatars2.githubusercontent.com/u/211294?v=4" width="100px;" alt=""/><br /><sub><b>Christian Münch</b></sub></a><br /><a href="https://github.com/firegento/firegento-customer/commits?author=cmuench" title="Code">💻</a></td>
   </tr>
 </table>
 
